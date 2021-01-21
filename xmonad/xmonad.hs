@@ -9,8 +9,8 @@
 import XMonad
 import XMonad.Layout.Fullscreen
     ( fullscreenEventHook, fullscreenManageHook, fullscreenSupport, fullscreenFull )
-import Data.Monoid ()
-import System.Exit ()
+import Data.Monoid
+import System.Exit
 import XMonad.Util.SpawnOnce ( spawnOnce )
 import Graphics.X11.ExtraTypes.XF86 (xF86XK_AudioLowerVolume, xF86XK_AudioRaiseVolume, xF86XK_AudioMute, xF86XK_MonBrightnessDown, xF86XK_MonBrightnessUp, xF86XK_AudioPlay, xF86XK_AudioPrev, xF86XK_AudioNext)
 import XMonad.Hooks.EwmhDesktops ( ewmh )
@@ -106,9 +106,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     , ((0,                    xF86XK_AudioPlay), spawn "playerctl play-pause")
     , ((0,                    xF86XK_AudioPrev), spawn "playerctl previous")
     , ((0,                    xF86XK_AudioNext), spawn "playerctl next")
-    , ((0,                    xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume 0 +5%")
-    , ((0,                    xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume 0 -5%")
-    , ((0,                    xF86XK_AudioMute), spawn "pactl set-sink-mute 0 toggle")
+    , ((0,                    xF86XK_AudioRaiseVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ +5%")
+    , ((0,                    xF86XK_AudioLowerVolume), spawn "pactl set-sink-volume @DEFAULT_SINK@ -5%")
+    , ((0,                    xF86XK_AudioMute), spawn "pactl set-sink-mute @DEFAULT_SINK@ toggle")
 
     -- Brightness keys
     , ((0,                    xF86XK_MonBrightnessUp), spawn "brightnessctl s +10%")
